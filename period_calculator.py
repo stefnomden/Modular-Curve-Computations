@@ -2,7 +2,7 @@ import cmath
 import math
 
 def g_4(w_1, w_2, R=50):  #takes generators of lattice and returns g_4
-  if (w_1/w_2).imag > 0:
+  if (w_1/w_2).imag > 0:  #formula used is equation 6.50 in Knapp
     omega_1 = w_1
     omega_2 = w_2
   else:
@@ -19,7 +19,7 @@ def g_4(w_1, w_2, R=50):  #takes generators of lattice and returns g_4
   return factor*(1+240*sum)
 
 def g_6(w_1,w_2, R=50):   #takes generators of lattice and returns g_6
-  if (w_1/w_2).imag > 0:
+  if (w_1/w_2).imag > 0:  #formula used is equation 6.50 in Knapp
     omega_1 = w_1
     omega_2 = w_2
   else:
