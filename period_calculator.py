@@ -43,7 +43,7 @@ def Phi_f(M, f): #M is a 2x2 matrix in \Gamma_0(N), f is an array with the fouri
   sum = 0
 
   for n in range(1, f.shape[0]+1):
-    sum += ((f[n-1])/complex(0,2*math.pi*n))*(math.e**(complex(-(2*math.pi*n)/(cN),0)))*(math.e**(complex(0,(2*math.pi*n*a)/(cN))) - math.e**(complex(0,(-2*math.pi*n*d)/(cN))))
+    sum += ((f[n-1])/n)*(math.e**(complex(-(2*math.pi*n)/(cN),0)))*(math.e**(complex(0,(2*math.pi*n*a)/(cN))) - math.e**(complex(0,(-2*math.pi*n*d)/(cN))))
   return sum
 
 
