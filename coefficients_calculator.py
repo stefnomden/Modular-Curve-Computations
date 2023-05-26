@@ -1,6 +1,23 @@
 #the functions in this file are implementations of the Kraus–Laska–Connell
 #algorithm which can be found in section 3.2 of Cremona's book 'Algorithms for Modular Elliptic Curves'
 
+def prime_decomp(n): #takes an integer n and returns array with power and order of primes dividing n.
+  p = []
+  if n < 0:
+    p.append(-1)
+    n = abs(n)
+  i = 2
+  while i*i <= n:   #prime divisors of n do not exceed the square root of n
+    if n % i != 0:
+      i += 1
+    else:
+      p.append(i) #if n is divisible by i then add i to the list of divisors, divide n by this number and start at i = 2 again.
+      n = int(n/i)
+      i = 2
+  if n > 1:   #if the last prime was not caught by the above then n>1 and we add it to the list
+    p.append(n)
+  return p
+
 
 def mod(n,p):         #takes integers n and p and returns n mod p between -p/2 and p/2
   modulo = n % p      
