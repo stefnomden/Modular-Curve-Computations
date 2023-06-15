@@ -56,4 +56,7 @@ def coeffs_calculator(f, M, vplus, vminus, gamma): #takes array with fourier coe
   g4 = g_4(w_1,w_2)
   g6 = g_6(w_1,w_2)
   j = (1728*(g4**3))/(g4**3-27*(g6**2))
-  return g4, g6, j, w_1, w_2
+  error = math.e**(-2*math.pi*(f.shape[0]+1)/M[1,0])/(1-math.e**(-2*math.pi/M[1,0])) #estimated error (see section 5.3)
+  return g4, g6, j, w_1, w_2, error
+
+
