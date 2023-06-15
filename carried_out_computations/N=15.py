@@ -8,6 +8,7 @@ vplus = [0,1]
 vminus = [1,0]
 gamma = np.array([-1,1])
 values = coeffs_calculator(eta_product15,M,vplus,vminus,gamma)
+print('ε(M)=', values[5])
 print('ω1=',values[3])
 print('ω2=',values[4])
 print('g4=', values[0])
