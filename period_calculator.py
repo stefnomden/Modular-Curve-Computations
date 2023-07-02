@@ -34,6 +34,47 @@ def g_6(w_1,w_2, R=50):   #takes generators of lattice and returns g_6
 
   return factor*(1-504*sum)
 
+def error_4(w_1,w_2,M=50):    #calculates the estimated error bound of g_4 using Proposition 6.11 of the thesis
+  if (w_1/w_2).imag > 0:
+    omega_1 = w_1
+    omega_2 = w_2
+  else:
+    omega_2 = w_1
+    omega_1 = w_2
+
+  tau = omega_1/omega_2
+  a = 1/(math.e**(2*math.pi*tau.imag) - 1)
+  if a > 1:
+    print('error, a>1')
+    return 
+  
+  sum = 0 
+  for d in range(M):
+    sum += (d**3)*(a**d)
+  factor = (a*(a**2+4*a+1)/((a-1)**4))
+  return (320*math.pi**4)/(cmath.polar(omega_2)[0]**4)*(factor - sum)
+
+
+def error_6(w_1,w_2,M=50):  #calculates the estimated error bound of g_6 using Proposition 6.11 of the thesis
+  if (w_1/w_2).imag > 0:
+    omega_1 = w_1
+    omega_2 = w_2
+  else:
+    omega_2 = w_1
+    omega_1 = w_2
+
+  tau = omega_1/omega_2
+  a = 1/(math.e**(2*math.pi*tau.imag) - 1)
+  if a > 1:
+    print('error, a>1')
+    return
+
+  sum = 0  
+  for d in range(M):
+    sum += (d**5)*(a**d)
+  factor = (a*(a**4+26*a**3+66*a**2+26*a+1))/((a-1)**6)
+  return (448*math.pi**6)/(3*cmath.polar(omega_2)[0]**6)*(factor - sum)
+
 
 def Phi_f(M, f): #M is a 2x2 matrix in \Gamma_0(N), f is an array with the fourier coefficients of f
   a = M[0,0]     #Returns the period Phi_f(M) calculated as in Proposition 2.10.2. of Cremora
